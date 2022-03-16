@@ -40,7 +40,7 @@
 				<input type="text" id="name" class="form-control mt-3" placeholder="이름">
 				<input type="text" id="email" class="form-control mt-3" placeholder="이메일">
 				
-				<button id="joinBtn" class="btn btn-primary btn-block mt-4">회원가입</button>
+				<button id="joinBtn" class="btn btn-dark btn-block mt-4">회원가입</button>
 				
 			</div>
 		</section>

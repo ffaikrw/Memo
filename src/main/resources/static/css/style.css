@@ -14,6 +14,14 @@ header {
 	width: 500px;
 }
 
+.login-box {
+	width: 500px;
+}
+
+.signup-link {
+	text-decoration: underline;
+}
+
 footer {
 	height: 70px;
 	background-color: #dddddd;
