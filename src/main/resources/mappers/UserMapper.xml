@@ -29,5 +29,24 @@
 		)
 	
 	</insert>
+	
+	
+	<select id="selectUser" parameterType="map" resultType="com.ffaikrw.memo.user.model.User">
+	
+		select
+			`id`
+			, `loginId`
+			, `password`
+			, `name`
+			, `email`
+			, `createdAt`
+			, `updatedAt`
+		from
+			`user`
+		where
+			`loginId` = #{loginId}
+			and `password` = #{password}	
+	
+	</select>
 
 </mapper>

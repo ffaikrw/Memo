@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,12 @@
 
 	<div id="wrap">
 	
-		<header class="d-flex align-items-center">
-			<h1 class="ml-3">Memo</h1>
-		</header>
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<section class="d-flex justify-content-center">
 			<div class="join-box my-5 h-100">
 				
-				<h1 class="text-center mb-5">회원가입</h1>
+				<h1 class="text-center mb-5 font-weight-bold">회원가입</h1>
 				
 				<!-- 아이디, 비밀번호, 비밀번호 확인, 이름, 이메일 -->
 				
@@ -45,9 +44,7 @@
 			</div>
 		</section>
 		
-		<footer class="d-flex justify-content-center align-items-center">
-			Copyright 2022. Memo all rights reserved.
-		</footer>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
 	

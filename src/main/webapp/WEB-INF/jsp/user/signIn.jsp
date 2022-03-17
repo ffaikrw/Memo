@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,34 +24,81 @@
 
 	<div id="wrap">
 	
-		<header class="d-flex align-items-center">
-			<h1 class="ml-3">Memo</h1>
-		</header>
+		<c:import url="/WEB-INF/jsp/include/header.jsp" />
 		
 		<section class="d-flex justify-content-center">
-			<div class="login-box my-5 h-100">
-				
-				<h1 class="text-center mb-5">로그인</h1>
-				
-				<!-- 아이디, 비밀번호, 비밀번호 확인, 이름, 이메일 -->
-				
-				<input type="text" id="loginId" class="form-control" placeholder="아이디">
-				<input type="password" id="password" class="form-control mt-3" placeholder="비밀번호">
-				
-				<button id="joinBtn" class="btn btn-dark btn-block mt-4">로그인</button>
-				
-				<div class="d-flex justify-content-center align-items-center mt-4">
-					<a href="/user/signup_view" class="signup-link">회원가입</a>
+			<form id="loginForm">
+				<div class="join-box my-5 h-100">
+					
+					<h1 class="text-center mb-5 font-weight-bold">로그인</h1>
+					
+					<input type="text" id="loginId" class="form-control" placeholder="아이디">
+					<input type="password" id="password" class="form-control mt-3" placeholder="비밀번호">
+					
+					<button type="submit" id="joinBtn" class="btn btn-dark btn-block mt-4">로그인</button>
+					
+					<div class="d-flex justify-content-center align-items-center mt-4">
+						<a href="/user/signup_view" class="signup-link">회원가입</a>
+					</div>
+					
 				</div>
-				
-			</div>
+			</form>
 		</section>
 		
-		<footer class="d-flex justify-content-center align-items-center">
-			Copyright 2022. Memo all rights reserved.
-		</footer>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	
 	</div>
+	
+	
+	<script>
+	
+		$(document).ready(function(){
+			
+			$("#loginForm").on("submit", function(e){
+				
+				e.preventDefault();	// 이 함수의 이벤트가 갖고 있는 속성을 모두 막는 함수.
+				
+				let loginId = $("#loginId").val().trim();
+				let password = $("#password").val().trim();
+				
+				if (loginId == "") {
+					alert("아이디를 입력해주세요.");
+					return;
+				}
+				
+				if (password == "") {
+					alert("비밀번호를 입력해주세요.");
+					return;
+				}
+				
+				$.ajax({
+					
+					type:"post"
+					, url:"/user/sign_in"
+					, data:{"loginId":loginId, "password":password}
+					, success:function(data){
+						
+						if (data.result == "success") {
+							alert("로그인 성공");
+						} else {
+							alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+						}
+						
+					}
+					, error:function(){
+						alert("로그인 통신 에러");
+					}
+					
+					
+					
+				});
+				
+			});
+			
+		});
+	
+	
+	</script>
 
 </body>
 </html>
