@@ -96,7 +96,7 @@
 					success: function(data){
 						
 						if(data.result == "success") {
-							alert("회원가입 성공");
+							location.href="/user/signin_view";
 						} else {
 							alert("회원가입 실패");
 						}
