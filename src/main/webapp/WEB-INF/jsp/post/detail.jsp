@@ -37,6 +37,9 @@
 				
 				<textarea id="contentInput" class="form-control mt-3" rows="5">${ post.content }</textarea>
 				
+				<c:if test="${ not empty post.imagePath }">
+				<img src="${ post.imagePath }" height="200px">
+				</c:if>
 				<div class="d-flex justify-content-between mt-3">
 					<div class="d-flex">
 						<a href="/post/list_view" class="btn btn-light">목록으로</a>

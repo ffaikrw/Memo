@@ -15,6 +15,7 @@ public interface PostDAO {
 			@Param("userId") int userId
 			, @Param("subject") String subject
 			, @Param("content") String content
+			, @Param("filePath") String filePath
 			);
 	
 	

@@ -6,15 +6,32 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService {
 	
-	private String FILE_UPLOAD_PATH = "D:\\정혜원\\SpringProject\\memo\\upload\\images/";
+	// utils 메소드 중 멤버변수의 사용이 별로 없는 메소드는 일반적으로 static 메소드
 	
+	// 멤버변수로 설정
+	// final을 붙여주면 변수형태로 이 변수의 값을 변경시킬 수 없음
+	public final static String FILE_UPLOAD_PATH = "D:\\정혜원\\SpringProject\\memo\\upload\\images/";
+	
+	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	// 파일 저장 후 접근 경로 리턴
-	public String saveFile(int userId, MultipartFile file) {
+	public static String saveFile(int userId, MultipartFile file) {
+		
+		// 로그 쌓는 방법
+		
+		// 파일을 올리지 않았을 때 null을 리턴하도록 함
+		if (file == null) {
+			
+			logger.error("FileManagerService-saveFile : 파일 없음");
+			
+			return null;
+		}
 		
 		// 1. 파일 경로
 		// 파일 이름이 겹치는 것을 방지하기 위해 사용자 별로 폴더 구분
@@ -32,6 +49,7 @@ public class FileManagerService {
 		File directory = new File(filePath);
 		if (directory.mkdir() == false) {
 			// 디렉토리 생성 에러
+			logger.error("FileManagerService-saveFile : 디렉토리 생성 에러");
 			return null;
 		}
 		
@@ -45,6 +63,7 @@ public class FileManagerService {
 		} catch (IOException e) {
 			
 			e.printStackTrace();
+			logger.error("FileManagerService-saveFile : 파일 저장 에러");
 			return null;
 			
 		}

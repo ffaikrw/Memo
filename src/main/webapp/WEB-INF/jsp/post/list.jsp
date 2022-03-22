@@ -17,6 +17,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	
 	<!-- stylesheet -->
 	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
@@ -30,7 +32,7 @@
 		<section class="d-flex justify-content-center">
 			<div class="w-75 my-5">
 				
-				<h1 class="text-center font-weight-bold">메모 목록</h1>
+				<h1 class="text-center font-weight-bold">메모 목록 <i class="bi bi-heart text-danger"></i> </h1>
 				
 				<table class="table text-center mt-3">
 					<thead>
