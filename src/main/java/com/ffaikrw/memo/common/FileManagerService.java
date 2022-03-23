@@ -18,12 +18,11 @@ public class FileManagerService {
 	// final을 붙여주면 변수형태로 이 변수의 값을 변경시킬 수 없음
 	public final static String FILE_UPLOAD_PATH = "D:\\정혜원\\SpringProject\\memo\\upload\\images/";
 	
+	// 로그 쌓는 방법
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	// 파일 저장 후 접근 경로 리턴
 	public static String saveFile(int userId, MultipartFile file) {
-		
-		// 로그 쌓는 방법
 		
 		// 파일을 올리지 않았을 때 null을 리턴하도록 함
 		if (file == null) {

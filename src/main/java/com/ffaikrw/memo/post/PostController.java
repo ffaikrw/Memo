@@ -22,12 +22,15 @@ public class PostController {
 	@Autowired
 	private PostBO postBO;
 	
+	
+	// 메모 작성 View
 	@GetMapping("/create_view")
 	public String createView() {
 		return "post/create";
 	}
 	
 	
+	// 메모리스트 View
 	@GetMapping("/list_view")
 	public String listView(
 			HttpServletRequest request
@@ -46,7 +49,7 @@ public class PostController {
 	}
 	
 	
-	// 메모 보기
+	// 메모 상세 보기 View
 	@GetMapping("/detail_view")
 	public String detailView(@RequestParam("id") int id, Model model) {
 		
