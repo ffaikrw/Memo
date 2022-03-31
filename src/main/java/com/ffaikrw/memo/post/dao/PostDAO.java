@@ -26,4 +26,18 @@ public interface PostDAO {
 	// 메모 보기
 	public Post selectPost(@Param("id") int id);
 	
+	
+	// 메모 수정
+	public int updatePost(
+			@Param("postId") int postId
+			, @Param("subject") String subject
+			, @Param("content") String content
+			);
+	
+	
+	// 메모 삭제
+	public int deletePost(
+			@Param("postId") int postId
+			, @Param("userId") int userId);
+	
 }

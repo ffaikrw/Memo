@@ -67,10 +67,60 @@ public class FileManagerService {
 			
 		}
 		
-		
 		// <img src="/images/6_3298237523.../test.jpg">
 		return "/images/" + directoryName + file.getOriginalFilename();
 
+	}
+	
+	
+	// 파일 삭제 메소드
+	public static boolean removeFile(String filePath) {
+		
+		if(filePath == null) {
+			logger.error("FileManagerService-saveFile : 파일 없음");
+			return false;
+		}
+		
+		// filePath : /images/2_14798342/dog.jpg
+		// 실제 파일 경로 : D:\\정혜원\\SpringProject\\memo\\upload\\images/2_14798342/dog.jpg
+		
+		// FILE_UPLOAD_PATH + 2_14798342/dog.jpg
+		// 실제 파일 경로
+		String realFilePath = FILE_UPLOAD_PATH + filePath.replace("/images/", "");
+		
+		// 파일 삭제
+		Path path = Paths.get(realFilePath);
+		
+		// 삭제할 파일 유무 확인
+		if (Files.exists(path)) {	// 파일이 존재
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				logger.error("FileManagerService-saveFile : 파일 삭제 실패");
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		// 실제 파일 경로 : D:\\정혜원\\SpringProject\\memo\\upload\\images/2_14798342/dog.jpg
+		// 디렉토리 삭제
+		// 디렉토리 경로 : D:\\정혜원\\SpringProject\\memo\\upload\\images/2_14798342
+		
+		path = path.getParent(); // 디렉토리 경로가 저장됨
+		
+		// 디렉토리 존재 여부 확인
+		if (Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				logger.error("FileManagerService-saveFile : 디렉토리 삭제 실패");
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return true;
+		
 	}
 	
 }

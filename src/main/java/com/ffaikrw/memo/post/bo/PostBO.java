@@ -32,9 +32,28 @@ public class PostBO {
 		return postDAO.selectPostList(userId);
 	}
 	
+	
 	// 메모 보기
 	public Post getPost(int id) {
 		return postDAO.selectPost(id);
+	}
+	
+	
+	// 메모 수정
+	public int updatePost(int postId, String subject, String content) {
+		return postDAO.updatePost(postId, subject, content);
+	}
+	
+	
+	// 메모 삭제
+	public int deletePost(int postId, int userId) {
+		
+		Post post = this.getPost(postId); // 위의 '메모 보기' 메소드 호출
+		
+		// 파일 삭제
+		FileManagerService.removeFile(post.getImagePath());
+		
+		return postDAO.deletePost(postId, userId);
 	}
 	
 }

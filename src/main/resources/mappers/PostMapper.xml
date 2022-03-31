@@ -65,5 +65,29 @@
 			`id` = #{id}	
 		
 	</select>
+	
+	
+	<update id="updatePost" parameterType="map">
+		
+		update `post`
+		set
+			`subject` = #{subject}
+			, `content` = #{content}
+			, `updatedAt` = now()
+		where
+			`id` = #{postId}
+		
+	</update>
+	
+	
+	<delete id="deletePost" parameterType="int">
+	
+		delete from
+			`post`
+		where
+			`id` = #{postId}
+			and `userId` = #{userId}
+	
+	</delete>
 
 </mapper>
